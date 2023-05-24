@@ -80,12 +80,17 @@ public class Game1 : Game
 
         // TODO: Add your drawing code here
         // _spriteBatch.Begin(transformMatrix: _camera.Transform);
-        _spriteBatch.Begin();
+        Matrix transform = Matrix.CreateTranslation(-10, -10, 0) * Matrix.CreateTranslation(100, 100, 0);
+        _spriteBatch.Begin(transformMatrix: transform);
 
         foreach (Component component in _componentManager.GetComponentList())
         {
             component.Draw(gameTime);
         }
+        _spriteBatch.End();
+
+        _spriteBatch.Begin();
+        // _spriteBatch.DrawString(new SpriteFont(), "title", new Vector2(100, 100));
         _spriteBatch.End();
 
         base.Draw(gameTime);
